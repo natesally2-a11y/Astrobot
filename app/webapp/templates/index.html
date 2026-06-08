@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stellarium AI Mini App</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <main class="container">
+        <section class="hero card">
+            <p class="eyebrow">Stellarium AI</p>
+            <h1>Персональная натальная карта в Telegram</h1>
+            <p id="hero-text">Загружаем ваш профиль, карту и историю чтений...</p>
+            <div class="hero-actions">
+                <button id="open-bot">Открыть чат с ботом</button>
+                <button id="refresh-data" class="secondary">Обновить</button>
+            </div>
+        </section>
+
+        <section class="grid">
+            <article class="card">
+                <h2>Профиль</h2>
+                <div id="profile"></div>
+            </article>
+            <article class="card">
+                <h2>Подписка</h2>
+                <div id="subscription"></div>
+            </article>
+        </section>
+
+        <section class="card">
+            <h2>My Chart</h2>
+            <div id="chart-wrapper" class="chart-wrapper"></div>
+        </section>
+
+        <section class="grid">
+            <article class="card">
+                <h2>История чтений</h2>
+                <div id="readings"></div>
+            </article>
+            <article class="card">
+                <h2>Совместимость</h2>
+                <form id="compatibility-form">
+                    <label>
+                        Имя партнера
+                        <input name="partner_name" required placeholder="Алекс" />
+                    </label>
+                    <label>
+                        Дата рождения
+                        <input name="birth_date" type="date" required />
+                    </label>
+                    <label>
+                        Время рождения
+                        <input name="birth_time" type="time" />
+                    </label>
+                    <label>
+                        Город рождения
+                        <input name="birth_place" required placeholder="Санкт-Петербург" />
+                    </label>
+                    <label class="checkbox">
+                        <input name="is_time_approximate" type="checkbox" />
+                        Время примерное
+                    </label>
+                    <button type="submit">Рассчитать совместимость</button>
+                </form>
+                <div id="compatibility-result" class="compatibility-result"></div>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        window.STELLARIUM_APP = {
+            defaultTelegramId: {{ telegram_id|tojson }},
+            botUsername: {{ bot_username|tojson }}
+        };
+    </script>
+    <script src="/static/app.js"></script>
+</body>
+</html>
