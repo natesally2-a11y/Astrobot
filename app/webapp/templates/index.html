@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stellarium AI</title>
+    <link rel="stylesheet" href="/app/static/styles.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Stellarium AI</p>
+          <h1>Ваша интерактивная натальная карта</h1>
+          <p id="subtitle">Загрузка профиля...</p>
+        </div>
+        <button id="reading-button" type="button">Получить чтение</button>
+      </section>
+
+      <section class="card chart-card">
+        <div id="chart" class="chart-placeholder">Карта появится после загрузки данных</div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>My Chart</h2>
+          <p id="birth-data">Дата, время и место рождения будут показаны здесь.</p>
+        </article>
+        <article class="card">
+          <h2>Подписка</h2>
+          <p id="subscription">Free</p>
+          <button id="upgrade-button" type="button">Апгрейд через бота</button>
+        </article>
+        <article class="card premium">
+          <h2>Транзиты</h2>
+          <p>Premium-календарь важных дат доступен в тарифах Pro и Оракул.</p>
+        </article>
+        <article class="card">
+          <h2>Совместимость</h2>
+          <p>Введите данные партнера в боте командой /compatibility.</p>
+        </article>
+      </section>
+    </main>
+
+    <dialog id="reading-dialog">
+      <article>
+        <button id="close-dialog" class="close" type="button">×</button>
+        <h2>AI-чтение</h2>
+        <p id="reading-text">Готовлю интерпретацию...</p>
+      </article>
+    </dialog>
+
+    <script src="/app/static/app.js"></script>
+  </body>
+</html>
