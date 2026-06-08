@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Stellarium AI</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="/static/css/app.css" />
+</head>
+<body>
+  <main>
+    <header class="header">
+      <div class="brand">
+        <span class="logo">🌌</span>
+        <h1>Stellarium AI</h1>
+      </div>
+      <div id="status" class="status-pill">Загрузка…</div>
+    </header>
+
+    <section class="card chart-card">
+      <h2>Ваша натальная карта</h2>
+      <div id="chartContainer" class="chart-container">
+        <div class="spinner"></div>
+      </div>
+      <div id="summary" class="summary"></div>
+    </section>
+
+    <section class="card planets-card">
+      <h2>Планеты</h2>
+      <table id="planetsTable" class="planets-table">
+        <thead>
+          <tr><th>Планета</th><th>Знак</th><th>Градус</th><th>Дом</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card aspects-card">
+      <h2>Ключевые аспекты</h2>
+      <ul id="aspectsList" class="aspects-list"></ul>
+    </section>
+
+    <section class="card cta-card">
+      <button id="readingBtn" class="primary-btn">✨ Получить новое чтение</button>
+      <button id="upgradeBtn" class="secondary-btn" hidden>⭐ Открыть Stellarium Pro</button>
+    </section>
+
+    <footer class="footer">
+      ⚠️ Прогнозы носят развлекательный характер.
+    </footer>
+  </main>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

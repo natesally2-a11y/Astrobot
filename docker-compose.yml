@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: stellarium_app
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://stellarium:stellarium@db:5432/stellarium
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./ephe:/app/ephe
+
+  db:
+    image: postgres:15-alpine
+    container_name: stellarium_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: stellarium
+      POSTGRES_PASSWORD: stellarium
+      POSTGRES_DB: stellarium
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stellarium"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: stellarium_redis
+    restart: unless-stopped
+
+volumes:
+  pgdata:
