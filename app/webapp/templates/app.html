@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Stellarium AI</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="/static/app.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>✨ Stellarium AI</h1>
+    <div id="subscription" class="sub-badge">…</div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="chart">Карта</button>
+    <button class="tab" data-tab="planets">Планеты</button>
+    <button class="tab" data-tab="compat">Совместимость</button>
+    <button class="tab" data-tab="transits">Транзиты</button>
+    <button class="tab" data-tab="settings">Профиль</button>
+  </nav>
+
+  <main>
+    <section id="tab-chart" class="tab-panel active">
+      <div id="chart-wrap" class="chart-wrap">
+        <div class="loader">Загрузка карты…</div>
+      </div>
+      <p id="chart-meta" class="meta"></p>
+      <button id="get-reading" class="primary-btn">🔮 Получить чтение в чате</button>
+    </section>
+
+    <section id="tab-planets" class="tab-panel">
+      <ul id="planet-list" class="planet-list"></ul>
+      <h3>Аспекты</h3>
+      <ul id="aspect-list" class="aspect-list"></ul>
+    </section>
+
+    <section id="tab-compat" class="tab-panel">
+      <h2>💞 Совместимость</h2>
+      <label>Имя партнёра<input id="c-name" type="text" placeholder="Например, Анна" /></label>
+      <label>Дата рождения<input id="c-date" type="date" /></label>
+      <label>Время (необязательно)<input id="c-time" type="time" /></label>
+      <label>Город рождения<input id="c-city" type="text" placeholder="Москва" /></label>
+      <button id="c-submit" class="primary-btn">Проверить совместимость</button>
+      <div id="c-result" class="result"></div>
+    </section>
+
+    <section id="tab-transits" class="tab-panel">
+      <h2>🪐 Важные транзиты</h2>
+      <div id="transits-locked" class="locked hidden">
+        🔒 Доступно в подписке Pro / Oracle.
+        <button id="upgrade-from-transits" class="primary-btn">Оформить подписку</button>
+      </div>
+      <button id="load-transits" class="primary-btn">Показать транзиты</button>
+      <div id="transits-result" class="result"></div>
+    </section>
+
+    <section id="tab-settings" class="tab-panel">
+      <h2>👤 Профиль</h2>
+      <div id="profile" class="profile"></div>
+      <button id="upgrade" class="primary-btn">⭐ Управление подпиской</button>
+      <p class="disclaimer">⚠️ Прогнозы носят развлекательный характер и не являются
+        руководством к действию.</p>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
