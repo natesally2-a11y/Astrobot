@@ -1,6 +1,6 @@
 from datetime import date, datetime, time, timedelta
 
-from sqlalchemy import delete, select
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import get_settings
@@ -226,6 +226,6 @@ async def delete_user_data(session: AsyncSession, user_id: int) -> bool:
     user = await session.get(User, user_id)
     if not user:
         return False
-    await session.execute(delete(User).where(User.telegram_id == user_id))
+    await session.delete(user)
     await session.commit()
     return True
