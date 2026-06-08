@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stellarium AI Mini App</title>
+    <link rel="stylesheet" href="/app/static/styles.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Stellarium AI</h1>
+        <p id="profile">Загрузка профиля...</p>
+      </header>
+
+      <nav class="nav">
+        <button data-tab="chart" class="active">My Chart</button>
+        <button data-tab="compatibility">Совместимость</button>
+        <button data-tab="transits">Транзиты</button>
+        <button data-tab="settings">Настройки</button>
+      </nav>
+
+      <section id="tab-chart" class="tab active">
+        <h2>Натальная карта</h2>
+        <div id="chart-svg" class="chart">Загрузка карты...</div>
+      </section>
+
+      <section id="tab-compatibility" class="tab">
+        <h2>Синастрия</h2>
+        <form id="compatibility-form">
+          <label>
+            Дата рождения партнёра
+            <input type="date" name="partner_birth_date" required />
+          </label>
+          <label>
+            Время рождения партнёра
+            <input type="time" name="partner_birth_time" required />
+          </label>
+          <label>
+            Город рождения партнёра
+            <input type="text" name="partner_place" placeholder="Berlin" required />
+          </label>
+          <button type="submit">Рассчитать</button>
+        </form>
+        <article id="compatibility-result"></article>
+      </section>
+
+      <section id="tab-transits" class="tab">
+        <h2>Транзиты дня</h2>
+        <article id="transits-result">Загрузка...</article>
+      </section>
+
+      <section id="tab-settings" class="tab">
+        <h2>План и управление</h2>
+        <p>Для апгрейда подписки откройте /settings в чате с ботом.</p>
+        <p>Удаление данных: /delete_data</p>
+        <p>Экспорт данных: /export_data</p>
+        <a href="/docs" target="_blank" rel="noopener noreferrer">API docs</a>
+      </section>
+    </main>
+
+    <script>
+      window.STELLARIUM_USER_ID = "{{ user_id }}";
+    </script>
+    <script src="/app/static/app.js"></script>
+  </body>
+</html>

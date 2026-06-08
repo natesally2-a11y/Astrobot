@@ -1,0 +1,15 @@
+aiogram
+aiogram-calendar
+fastapi
+uvicorn[standard]
+sqlalchemy[asyncio]
+asyncpg
+redis
+pydantic-settings
+python-dotenv
+httpx
+jinja2
+openai
+pyswisseph
+timezonefinder
+python-multipart
