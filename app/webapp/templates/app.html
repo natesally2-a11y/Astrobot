@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Stellarium AI</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+    <div class="cosmos-bg"></div>
+    <main class="container">
+        <header class="hero">
+            <h1>🌌 Stellarium AI</h1>
+            <p id="greeting" class="muted">Загружаем профиль…</p>
+        </header>
+
+        <section class="card">
+            <h2>Ваша натальная карта</h2>
+            <div id="chart-wrapper" class="chart-wrapper">
+                <div class="loader">Считаем карту…</div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Подписка</h2>
+            <p id="plan-status" class="muted">…</p>
+            <button class="btn primary" id="open-chat">💬 Открыть чат с ботом</button>
+            <button class="btn ghost" id="open-subscription">💳 Управление подпиской</button>
+        </section>
+
+        <section class="card">
+            <h2>Положения планет</h2>
+            <div id="positions" class="planet-grid"></div>
+        </section>
+
+        <section class="card">
+            <h2>История чтений</h2>
+            <ul id="readings" class="readings-list"></ul>
+        </section>
+
+        <footer class="footer">
+            <p class="muted small">⚠️ Астрологические прогнозы носят развлекательный характер.</p>
+        </footer>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
