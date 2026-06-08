@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Stellarium AI</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="/app/static/style.css">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <h1>🌟 Stellarium AI</h1>
+            <span id="plan-badge" class="badge">Free</span>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab active" data-tab="chart">Карта</button>
+            <button class="tab" data-tab="readings">История</button>
+            <button class="tab" data-tab="settings">Настройки</button>
+        </nav>
+
+        <main>
+            <section id="tab-chart" class="tab-content active">
+                <div id="chart-container" class="chart-container">
+                    <div class="loading">Загрузка карты...</div>
+                </div>
+                <div id="chart-info" class="chart-info"></div>
+                <button id="btn-reading" class="btn primary">Получить чтение в чате</button>
+                <button id="btn-upgrade" class="btn secondary hidden">Улучшить подписку</button>
+            </section>
+
+            <section id="tab-readings" class="tab-content">
+                <div id="readings-list" class="readings-list">
+                    <div class="loading">Загрузка...</div>
+                </div>
+            </section>
+
+            <section id="tab-settings" class="tab-content">
+                <div class="settings-card">
+                    <h3>Профиль</h3>
+                    <div id="profile-info">Загрузка...</div>
+                </div>
+                <div class="settings-card">
+                    <h3>Подписка</h3>
+                    <p class="plan-desc">
+                        <strong>Pro</strong> — 50 Stars/мес: безлимитные вопросы, недельные прогнозы<br>
+                        <strong>Оракул</strong> — 150 Stars/мес: всё из Pro + годовые прогнозы
+                    </p>
+                    <button id="btn-subscribe-pro" class="btn primary">⭐ Stellarium Pro</button>
+                    <button id="btn-subscribe-oracle" class="btn secondary">🌌 Космический Оракул</button>
+                </div>
+                <p class="disclaimer">
+                    ⚠️ Прогнозы носят развлекательный характер и не являются руководством к действию.
+                </p>
+            </section>
+        </main>
+    </div>
+    <script src="/app/static/app.js"></script>
+</body>
+</html>
