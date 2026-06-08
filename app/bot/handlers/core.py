@@ -125,8 +125,7 @@ async def start_onboarding(callback: CallbackQuery, state: FSMContext) -> None:
     await state.set_state(Onboarding.waiting_birth_date)
     await callback.message.answer(
         "Введите дату рождения в формате ДД.ММ.ГГГГ.\n"
-        "Например: 24.08.1992\n\n"
-        "В MVP дата вводится текстом; этот шаг готов для замены на расширенный inline-календарь."
+        "Например: 24.08.1992. Также подойдет формат 1992-08-24."
     )
     await callback.answer()
 

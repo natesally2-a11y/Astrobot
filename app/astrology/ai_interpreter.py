@@ -24,7 +24,7 @@ SYSTEM_PROMPT = (
 class AIInterpreter:
     def __init__(self) -> None:
         settings = get_settings()
-        api_key = settings.openai_api_key.get_secret_value() if settings.openai_api_key else ""
+        api_key = settings.openai_api_key.get_secret_value().strip() if settings.openai_api_key else ""
         self.model = settings.openai_model
         self.client = AsyncOpenAI(api_key=api_key) if api_key else None
 
