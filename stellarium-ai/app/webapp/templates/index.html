@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Stellarium AI — Ваша Натальная Карта</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-logo">
+                <span class="logo-symbol">✦</span>
+                <span class="logo-text">Stellarium AI</span>
+            </div>
+            <div class="subscription-badge" id="subscriptionBadge">
+                <span id="subLabel">Загрузка...</span>
+            </div>
+        </header>
+
+        <!-- Navigation tabs -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="chart">🗺 Карта</button>
+            <button class="tab-btn" data-tab="forecast">☀️ Прогноз</button>
+            <button class="tab-btn" data-tab="compatibility">💕 Совм.</button>
+            <button class="tab-btn" data-tab="profile">⚙️ Профиль</button>
+        </nav>
+
+        <!-- Chart Tab -->
+        <div class="tab-content active" id="tab-chart">
+            <div class="chart-section">
+                <div class="chart-container" id="chartContainer">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Загружаю карту...</p>
+                    </div>
+                </div>
+                <div class="chart-info" id="chartInfo"></div>
+            </div>
+            <div class="action-buttons">
+                <button class="btn-primary" onclick="openInBot('chart')">
+                    🔮 Получить интерпретацию
+                </button>
+            </div>
+        </div>
+
+        <!-- Forecast Tab -->
+        <div class="tab-content" id="tab-forecast">
+            <div class="forecast-section">
+                <div class="forecast-card today-card">
+                    <div class="forecast-header">
+                        <span class="forecast-icon">☀️</span>
+                        <h3>Прогноз на сегодня</h3>
+                    </div>
+                    <div class="forecast-body" id="todayForecast">
+                        <p class="hint-text">Нажмите кнопку для получения прогноза</p>
+                    </div>
+                    <button class="btn-primary" onclick="openInBot('today')">
+                        Получить прогноз
+                    </button>
+                </div>
+
+                <div class="forecast-card week-card" id="weekCard">
+                    <div class="forecast-header">
+                        <span class="forecast-icon">📅</span>
+                        <h3>Прогноз на неделю</h3>
+                        <span class="pro-badge">PRO</span>
+                    </div>
+                    <div class="forecast-body">
+                        <p class="hint-text">Доступно в Stellarium Pro</p>
+                    </div>
+                    <button class="btn-secondary" onclick="openInBot('week')">
+                        ⭐ Получить Pro
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compatibility Tab -->
+        <div class="tab-content" id="tab-compatibility">
+            <div class="compat-section">
+                <h2 class="section-title">💕 Анализ совместимости</h2>
+                <p class="section-desc">Введите данные партнёра для анализа синастрии</p>
+
+                <div class="compat-form">
+                    <div class="form-group">
+                        <label>Имя партнёра</label>
+                        <input type="text" id="partnerName" placeholder="Например: Александра" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Знак зодиака партнёра</label>
+                        <select id="partnerSign" class="form-select">
+                            <option value="">Выберите знак</option>
+                            <option value="Овен">♈ Овен</option>
+                            <option value="Телец">♉ Телец</option>
+                            <option value="Близнецы">♊ Близнецы</option>
+                            <option value="Рак">♋ Рак</option>
+                            <option value="Лев">♌ Лев</option>
+                            <option value="Дева">♍ Дева</option>
+                            <option value="Весы">♎ Весы</option>
+                            <option value="Скорпион">♏ Скорпион</option>
+                            <option value="Стрелец">♐ Стрелец</option>
+                            <option value="Козерог">♑ Козерог</option>
+                            <option value="Водолей">♒ Водолей</option>
+                            <option value="Рыбы">♓ Рыбы</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary" onclick="openInBot('compatibility')">
+                        💕 Полный анализ в боте
+                    </button>
+                </div>
+
+                <div class="quick-compat" id="quickCompat">
+                    <h3>Быстрая совместимость</h3>
+                    <div id="compatResult" class="compat-result"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Tab -->
+        <div class="tab-content" id="tab-profile">
+            <div class="profile-section">
+                <div class="profile-card">
+                    <div class="avatar">✨</div>
+                    <h2 id="profileName">Загрузка...</h2>
+                    <div class="profile-sub" id="profileSub">...</div>
+                </div>
+
+                <div class="birth-info" id="birthInfo">
+                    <h3>📅 Данные рождения</h3>
+                    <div class="info-grid" id="birthInfoGrid">
+                        <div class="loading-spinner small"><div class="spinner"></div></div>
+                    </div>
+                </div>
+
+                <div class="actions-list">
+                    <button class="action-item" onclick="openInBot('settings')">
+                        <span>⚙️</span> Настройки
+                        <span class="arrow">›</span>
+                    </button>
+                    <button class="action-item" onclick="openInBot('subscribe')">
+                        <span>⭐</span> Управление подпиской
+                        <span class="arrow">›</span>
+                    </button>
+                    <button class="action-item" onclick="openInBot('privacy')">
+                        <span>🔒</span> Конфиденциальность
+                        <span class="arrow">›</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
