@@ -1,0 +1,112 @@
+:root {
+    --bg: #070514;
+    --bg-card: rgba(28, 20, 58, 0.72);
+    --accent: #b8a6ff;
+    --accent-2: #ffd86b;
+    --text: #ece8ff;
+    --muted: #9286c4;
+    --radius: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
+    background: radial-gradient(circle at 50% 0%, #1b1140 0%, #070514 70%);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 76px;
+}
+
+.stars-bg {
+    position: fixed; inset: 0; z-index: -1;
+    background-image:
+        radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+        radial-gradient(1px 1px at 70% 60%, #fff, transparent),
+        radial-gradient(1px 1px at 40% 80%, #cbb8ff, transparent),
+        radial-gradient(2px 2px at 85% 20%, #fff, transparent);
+    opacity: 0.5;
+}
+
+/* Landing */
+.landing { display: flex; align-items: center; justify-content: center; }
+.landing-content { text-align: center; max-width: 480px; padding: 40px 24px; }
+.logo { font-size: 64px; }
+.tagline { color: var(--accent); margin: 8px 0 16px; }
+.lead { color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
+
+h1 { font-size: 32px; background: linear-gradient(90deg, var(--accent), var(--accent-2));
+     -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+.app-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px; position: sticky; top: 0; backdrop-filter: blur(8px);
+    background: rgba(7, 5, 20, 0.6); z-index: 10;
+}
+.brand { font-weight: 700; }
+.badge {
+    background: var(--bg-card); border: 1px solid var(--accent);
+    padding: 4px 10px; border-radius: 999px; font-size: 12px; color: var(--accent);
+}
+
+.app-main { padding: 16px; max-width: 560px; margin: 0 auto; }
+.tab { display: none; animation: fade .3s ease; }
+.tab.active { display: block; }
+@keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; } }
+
+.chart-wrap { display: flex; justify-content: center; margin-bottom: 12px; }
+.chart-wrap svg { width: 100%; max-width: 420px; height: auto; border-radius: var(--radius); }
+.loader { color: var(--muted); padding: 40px; text-align: center; }
+
+.meta { text-align: center; color: var(--muted); margin-bottom: 16px; font-size: 14px; }
+
+.btn {
+    display: inline-block; width: 100%; text-align: center;
+    background: linear-gradient(90deg, #6d5bbf, #9b59b6);
+    color: #fff; border: none; padding: 14px; border-radius: var(--radius);
+    font-size: 16px; cursor: pointer; text-decoration: none; margin: 8px 0;
+    transition: transform .1s ease, box-shadow .2s ease;
+}
+.btn:active { transform: scale(0.98); }
+
+.input {
+    width: 100%; padding: 12px 14px; margin: 6px 0;
+    background: var(--bg-card); border: 1px solid #3a2f66;
+    border-radius: 12px; color: var(--text); font-size: 16px;
+}
+
+.list { margin-top: 14px; }
+.list .row, .card {
+    background: var(--bg-card); border: 1px solid #2a2350;
+    border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.card { display: block; line-height: 1.8; }
+.row .name { color: var(--accent); }
+.row .retro { color: #ff8080; font-size: 12px; }
+
+.result { margin-top: 14px; }
+.score {
+    font-size: 48px; text-align: center; font-weight: 700;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+h2 { margin-bottom: 12px; }
+.muted { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+.legal { text-align: center; margin: 16px 0; font-size: 13px; }
+.legal a { color: var(--accent); }
+.disclaimer { color: var(--muted); font-size: 12px; text-align: center; margin-top: 14px; }
+
+.tabbar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    display: flex; background: rgba(10, 7, 26, 0.92);
+    backdrop-filter: blur(10px); border-top: 1px solid #2a2350;
+}
+.tab-btn {
+    flex: 1; background: none; border: none; color: var(--muted);
+    padding: 10px 4px; font-size: 20px; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.tab-btn span { font-size: 11px; }
+.tab-btn.active { color: var(--accent); }

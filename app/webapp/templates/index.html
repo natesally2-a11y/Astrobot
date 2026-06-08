@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>{{ title }}</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+
+    <header class="app-header">
+        <span class="brand">🔮 Stellarium AI</span>
+        <span id="plan-badge" class="badge">…</span>
+    </header>
+
+    <main class="app-main">
+        <!-- Chart tab -->
+        <section id="tab-chart" class="tab active">
+            <div id="chart-wrap" class="chart-wrap">
+                <div class="loader">Загрузка карты…</div>
+            </div>
+            <div id="chart-meta" class="meta"></div>
+            <button class="btn" id="open-bot-reading">✨ Получить чтение в чате</button>
+            <div id="planets-list" class="list"></div>
+        </section>
+
+        <!-- Compatibility tab -->
+        <section id="tab-compat" class="tab">
+            <h2>💞 Совместимость</h2>
+            <p class="muted">Введите данные партнёра:</p>
+            <input type="date" id="p-date" class="input">
+            <input type="time" id="p-time" class="input" placeholder="Время (необязательно)">
+            <input type="text" id="p-place" class="input" placeholder="Город рождения партнёра">
+            <button class="btn" id="calc-compat">Рассчитать</button>
+            <div id="compat-result" class="result"></div>
+        </section>
+
+        <!-- Transits tab -->
+        <section id="tab-transits" class="tab">
+            <h2>🌠 Транзиты</h2>
+            <div id="transits-result" class="list"><div class="loader">…</div></div>
+        </section>
+
+        <!-- Profile / settings tab -->
+        <section id="tab-profile" class="tab">
+            <h2>⚙️ Профиль</h2>
+            <div id="profile-info" class="card"></div>
+            <button class="btn" id="upgrade-btn">⭐ Управление подпиской</button>
+            <div class="legal">
+                <a href="#" id="link-privacy">Политика конфиденциальности</a> ·
+                <a href="#" id="link-terms">Условия использования</a>
+            </div>
+            <p class="disclaimer">⚠️ Прогнозы носят развлекательный характер.</p>
+        </section>
+    </main>
+
+    <nav class="tabbar">
+        <button class="tab-btn active" data-tab="chart">🪐<span>Карта</span></button>
+        <button class="tab-btn" data-tab="compat">💞<span>Пара</span></button>
+        <button class="tab-btn" data-tab="transits">🌠<span>Транзиты</span></button>
+        <button class="tab-btn" data-tab="profile">⚙️<span>Профиль</span></button>
+    </nav>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
