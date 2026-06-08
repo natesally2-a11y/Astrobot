@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  background: #0f1324;
+  color: #f6f8ff;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  margin-top: 0;
+  color: #b8c1ff;
+}
+
+.card {
+  margin-top: 18px;
+  background: #171e39;
+  border: 1px solid #2f3b6a;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+input {
+  background: #0f1324;
+  border: 1px solid #4f5f99;
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 8px 10px;
+  min-width: 260px;
+}
+
+button {
+  margin-left: 8px;
+  background: #7d8cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 14px;
+  cursor: pointer;
+}
+
+pre {
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 12px;
+}
+
+#chartContainer svg {
+  max-width: 100%;
+}
+

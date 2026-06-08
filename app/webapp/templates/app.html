@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Stellarium AI Mini App</title>
+    <link rel="stylesheet" href="/static/app.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Stellarium AI</h1>
+      <p class="subtitle">Интерактивная натальная карта и управление подпиской</p>
+
+      <section class="card">
+        <label for="telegramId">Telegram ID</label>
+        <input id="telegramId" type="number" placeholder="Введите Telegram ID" />
+        <button id="loadProfile">Загрузить профиль</button>
+      </section>
+
+      <section class="card" id="profileCard">
+        <h2>Профиль</h2>
+        <pre id="profileJson">Профиль не загружен</pre>
+      </section>
+
+      <section class="card">
+        <h2>Натальная карта</h2>
+        <div id="chartContainer">Карта появится после загрузки профиля.</div>
+      </section>
+
+      <section class="card">
+        <h2>Подписка</h2>
+        <p>Управление подпиской выполняется через команду <strong>/settings</strong> в боте.</p>
+      </section>
+    </main>
+
+    <script>
+      const tg = window.Telegram?.WebApp;
+      tg?.expand();
+
+      async function loadProfile() {
+        const telegramId = document.getElementById("telegramId").value.trim();
+        if (!telegramId) return;
+
+        const profileEl = document.getElementById("profileJson");
+        const chartEl = document.getElementById("chartContainer");
+
+        try {
+          const userResp = await fetch(`/api/user/${telegramId}`);
+          if (!userResp.ok) throw new Error("Пользователь не найден");
+          const user = await userResp.json();
+          profileEl.textContent = JSON.stringify(user, null, 2);
+
+          const chartResp = await fetch(`/api/chart/${telegramId}`);
+          const chart = await chartResp.json();
+          chartEl.innerHTML = chart.svg;
+        } catch (e) {
+          profileEl.textContent = String(e);
+          chartEl.textContent = "Не удалось построить карту.";
+        }
+      }
+
+      document.getElementById("loadProfile").addEventListener("click", loadProfile);
+    </script>
+  </body>
+</html>
+
