@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stellarium AI</title>
+    <link rel="stylesheet" href="/static/app.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Stellarium AI</p>
+          <h1>Ваша персональная натальная карта</h1>
+          <p>Карта, транзиты, история чтений и совместимость — внутри Telegram Mini App.</p>
+        </div>
+        <button id="openBot" class="secondary">Чат с ботом</button>
+      </section>
+
+      <section class="card status-card">
+        <h2>Профиль</h2>
+        <div id="profile">Загрузка...</div>
+      </section>
+
+      <section class="card">
+        <div class="section-header">
+          <h2>My Chart</h2>
+          <button id="refreshChart">Обновить</button>
+        </div>
+        <div id="chart" class="chart-placeholder">Карта появится после регистрации в боте.</div>
+        <div id="planetTable" class="planet-grid"></div>
+      </section>
+
+      <section class="card premium">
+        <h2>Транзиты</h2>
+        <div id="transits">Загрузка транзитов...</div>
+      </section>
+
+      <section class="card">
+        <h2>Совместимость</h2>
+        <form id="compatibilityForm" class="form-grid">
+          <input name="birth_date" placeholder="Дата партнера: 24.08.1992" required />
+          <input name="birth_time" placeholder="Время: 14:30 или пусто" />
+          <input name="birth_place" placeholder="Город рождения" required />
+          <button type="submit">Рассчитать</button>
+        </form>
+        <div id="compatibilityResult" class="reading"></div>
+      </section>
+
+      <section class="card">
+        <h2>История чтений</h2>
+        <div id="readings" class="readings"></div>
+      </section>
+    </main>
+    <script>
+      window.STELLARIUM_BOT_USERNAME = "{{ bot_username }}";
+    </script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
