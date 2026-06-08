@@ -1,0 +1,17 @@
+aiogram
+aiosqlite
+asyncpg
+fastapi
+httpx
+jinja2
+openai
+pydantic-settings
+pyswisseph
+pytest
+pytest-asyncio
+python-dotenv
+python-multipart
+redis
+sqlalchemy
+timezonefinder
+uvicorn[standard]

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ app_name }}</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body data-base-url="{{ base_url }}" data-telegram-id="{{ telegram_id or '' }}">
+    <main class="shell">
+      <section class="hero card">
+        <div>
+          <p class="eyebrow">Mini App</p>
+          <h1>{{ app_name }}</h1>
+          <p class="lead">
+            Персональная натальная карта, история чтений и управление подпиской в одном интерфейсе.
+          </p>
+        </div>
+        <button id="open-chat" class="primary">Открыть чат с ботом</button>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <div class="section-header">
+            <h2>My Chart</h2>
+            <span id="plan-pill" class="pill">free</span>
+          </div>
+          <div class="chart-frame">
+            <img id="chart-image" alt="Natal chart" />
+          </div>
+          <p id="chart-summary" class="muted">Загружаем карту...</p>
+        </article>
+
+        <article class="card">
+          <div class="section-header">
+            <h2>Транзиты</h2>
+            <span class="pill premium">Premium</span>
+          </div>
+          <p id="daily-forecast" class="text-block">Загружаем прогноз...</p>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <div class="section-header">
+            <h2>Совместимость</h2>
+            <span class="pill">До 3 партнеров</span>
+          </div>
+          <p class="muted">
+            Откройте чат бота и отправьте данные партнера командой <strong>/compatibility</strong>:
+            <code>YYYY-MM-DD | HH:MM | Город</code>
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="section-header">
+            <h2>История чтений</h2>
+          </div>
+          <ul id="reading-list" class="reading-list"></ul>
+        </article>
+      </section>
+
+      <section class="card">
+        <div class="section-header">
+          <h2>Дисклеймер</h2>
+        </div>
+        <p class="muted">{{ disclaimer }}</p>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

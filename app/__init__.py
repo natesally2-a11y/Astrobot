@@ -1,0 +1,1 @@
+"""Stellarium AI application package."""
