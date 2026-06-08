@@ -68,7 +68,11 @@ async def mini_app(request: Request, telegram_id: int = 777000):
             bot_username = me.username or ''
         except Exception:
             bot_username = ''
-    return templates.TemplateResponse('index.html', {'request': request, 'telegram_id': telegram_id, 'bot_username': bot_username})
+    return templates.TemplateResponse(
+        request=request,
+        name='index.html',
+        context={'telegram_id': telegram_id, 'bot_username': bot_username},
+    )
 
 
 @app.get('/privacy', response_class=HTMLResponse)
