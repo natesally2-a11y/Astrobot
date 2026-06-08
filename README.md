@@ -21,11 +21,31 @@ MVP Telegram Bot + Mini App для персонального AI-астроло�
 
 ```bash
 cp .env.example .env
-# заполните BOT_TOKEN, WEBHOOK_URL, WEBAPP_URL, OPENAI_API_KEY при наличии
-docker compose up --build
+# обязательно заполните BOT_TOKEN
+# для локального запуска без публичного HTTPS оставьте WEBHOOK_URL пустым
+docker compose --profile polling up --build
 ```
 
-Локально API будет доступен на `http://localhost:8000`.
+Локально API и Mini App будут доступны на `http://localhost:8000`. Для проверки Mini App
+в браузере используйте development query-параметр с вашим Telegram ID:
+
+```text
+http://localhost:8000/app?telegram_id=123456789
+```
+
+Для production webhook-режима укажите:
+
+```env
+WEBHOOK_URL=https://yourdomain.com/webhook
+WEBAPP_URL=https://yourdomain.com/app
+ENVIRONMENT=production
+```
+
+и запускайте обычный backend:
+
+```bash
+docker compose up --build
+```
 
 ## Основные команды
 
@@ -61,3 +81,11 @@ OPENAI_API_KEY=...
 - [Terms of Service](terms_of_service.md)
 - [Deployment Guide](deployment_guide.md)
 - [Mini App API Documentation](api_documentation.md)
+
+## Если бот или Mini App не отвечают
+
+1. Проверьте, что `BOT_TOKEN` в `.env` задан и токен не был отозван в BotFather.
+2. Для локального запуска используйте polling: `docker compose --profile polling up --build`. Без polling или публичного `WEBHOOK_URL` Telegram не доставит сообщения боту.
+3. Не оставляйте `WEBHOOK_URL=https://yourdomain.com/webhook`; пустой `WEBHOOK_URL` означает локальный режим.
+4. Откройте `http://localhost:8000/health` и проверьте, что backend отвечает.
+5. Mini App внутри Telegram требует публичный HTTPS URL, настроенный в BotFather. Для браузерной проверки используйте `?telegram_id=...` в development режиме.

@@ -4,7 +4,7 @@ from datetime import date, datetime, time
 
 
 DATE_FORMATS = ("%d.%m.%Y", "%Y-%m-%d", "%d/%m/%Y")
-TIME_FORMATS = ("%H:%M", "%H.%M")
+TIME_FORMATS = ("%H:%M", "%H.%M", "%H:%M:%S")
 
 
 def parse_birth_date(value: str) -> date:

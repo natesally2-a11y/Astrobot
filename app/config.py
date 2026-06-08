@@ -1,7 +1,7 @@
 from functools import lru_cache
 from typing import Literal
 
-from pydantic import AnyUrl, Field, SecretStr
+from pydantic import AnyUrl, Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -26,6 +26,21 @@ class Settings(BaseSettings):
     )
     redis_url: str = Field(default="redis://localhost:6379/0", alias="REDIS_URL")
     secret_key: SecretStr = Field(default=SecretStr("change-me"), alias="SECRET_KEY")
+
+    @field_validator("webhook_url", "webapp_url", mode="before")
+    @classmethod
+    def empty_url_to_none(cls, value: object) -> object:
+        if value == "":
+            return None
+        return value
+
+    @property
+    def sqlalchemy_database_url(self) -> str:
+        if self.database_url.startswith("postgresql://"):
+            return self.database_url.replace("postgresql://", "postgresql+asyncpg://", 1)
+        if self.database_url.startswith("postgres://"):
+            return self.database_url.replace("postgres://", "postgresql+asyncpg://", 1)
+        return self.database_url
 
     @property
     def safe_webapp_url(self) -> str:

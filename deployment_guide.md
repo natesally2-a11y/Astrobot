@@ -28,12 +28,26 @@ ENVIRONMENT=production
 
 ## 3. Docker Compose
 
+### Локальный режим без публичного домена
+
+Оставьте `WEBHOOK_URL` пустым и запустите backend вместе с polling-ботом:
+
+```bash
+docker compose --profile polling up --build -d
+docker compose logs -f api bot-polling
+```
+
+### Production webhook-режим
+
+Укажите публичный HTTPS `WEBHOOK_URL` и запустите только backend:
+
 ```bash
 docker compose up --build -d
 docker compose logs -f api
 ```
 
-Backend поднимет таблицы БД автоматически на старте.
+Backend поднимет таблицы БД автоматически на старте. Инициализация БД делает несколько
+повторных попыток, чтобы дождаться PostgreSQL после `docker compose up`.
 
 ## 4. Nginx
 
@@ -81,6 +95,10 @@ curl https://yourdomain.com/health
 2. `/chart` — получить SVG-карту и AI-анализ.
 3. `/settings` — открыть Mini App и проверить тарифы.
 4. Нажать Pro/Oracle и проверить инвойс Stars.
+
+Если бот не отвечает локально, убедитесь, что запущен service `bot-polling`. Если бот не
+отвечает в production, проверьте `WEBHOOK_URL`, HTTPS-сертификат и логи `api`.
+Mini App внутри Telegram открывается только с публичного HTTPS URL, настроенного в BotFather.
 
 ## 6. OpenAI fallback
 
