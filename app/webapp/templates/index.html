@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellarium AI</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="/app/static/css/style.css">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🌟</span>
+                <h1>Stellarium AI</h1>
+            </div>
+            <div class="user-info" id="userInfo"></div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab active" data-tab="chart">Карта</button>
+            <button class="tab" data-tab="compatibility">Совместимость</button>
+            <button class="tab" data-tab="transits">Транзиты</button>
+            <button class="tab" data-tab="settings">Настройки</button>
+        </nav>
+
+        <main class="content">
+            <!-- Chart Tab -->
+            <section id="tab-chart" class="tab-content active">
+                <div class="card">
+                    <h2>🌟 Натальная карта</h2>
+                    <div id="chartContainer" class="chart-container">
+                        <div class="loader">Загрузка карты...</div>
+                    </div>
+                    <div id="chartSummary" class="chart-summary"></div>
+                </div>
+                <div class="card">
+                    <h2>🪐 Позиции планет</h2>
+                    <div id="planetsList" class="planets-list"></div>
+                </div>
+                <div class="card">
+                    <h2>✨ Аспекты</h2>
+                    <div id="aspectsList" class="aspects-list"></div>
+                </div>
+                <button class="btn btn-primary" onclick="openBot('/today')">
+                    🔮 Получить прогноз на сегодня
+                </button>
+            </section>
+
+            <!-- Compatibility Tab -->
+            <section id="tab-compatibility" class="tab-content">
+                <div class="card">
+                    <h2>💕 Совместимость</h2>
+                    <p>Для анализа синастрии перейдите в чат с ботом:</p>
+                    <button class="btn btn-primary" onclick="openBot('/compatibility')">
+                        Анализ совместимости
+                    </button>
+                </div>
+            </section>
+
+            <!-- Transits Tab -->
+            <section id="tab-transits" class="tab-content">
+                <div class="card">
+                    <h2>🔮 Текущие транзиты</h2>
+                    <div id="premiumGate" class="premium-gate">
+                        <p>⭐ Подробные транзиты доступны подписчикам Pro</p>
+                        <button class="btn btn-accent" onclick="openBot('/settings')">
+                            Оформить подписку
+                        </button>
+                    </div>
+                    <div id="transitsContent" class="hidden"></div>
+                </div>
+            </section>
+
+            <!-- Settings Tab -->
+            <section id="tab-settings" class="tab-content">
+                <div class="card">
+                    <h2>⚙️ Настройки</h2>
+                    <div id="profileInfo" class="profile-info"></div>
+                </div>
+                <div class="card">
+                    <h2>⭐ Подписка</h2>
+                    <div id="subscriptionInfo"></div>
+                    <div id="plansList" class="plans-list"></div>
+                </div>
+                <div class="card">
+                    <h2>📊 История чтений</h2>
+                    <div id="readingsList" class="readings-list"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/app/static/js/app.js"></script>
+</body>
+</html>

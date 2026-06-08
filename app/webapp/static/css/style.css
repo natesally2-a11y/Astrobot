@@ -1,0 +1,344 @@
+:root {
+    --bg-primary: #0D1117;
+    --bg-secondary: #161B22;
+    --bg-card: #1C2128;
+    --border: #30363D;
+    --text-primary: #E6EDF3;
+    --text-secondary: #8B949E;
+    --accent: #58A6FF;
+    --accent-hover: #79C0FF;
+    --purple: #BC8CFF;
+    --green: #3FB950;
+    --orange: #F0883E;
+    --red: #F85149;
+    --radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+#app {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 12px 24px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    font-size: 28px;
+}
+
+.logo h1 {
+    font-size: 20px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.user-info {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.tabs {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    overflow-x: auto;
+}
+
+.tab {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.tab.active {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.card h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    margin-bottom: 12px;
+}
+
+.chart-container svg {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.chart-summary {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+}
+
+.chart-summary .sign-item {
+    text-align: center;
+}
+
+.chart-summary .sign-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.chart-summary .sign-value {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.planets-list, .aspects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.planet-row, .aspect-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.planet-row .symbol {
+    font-size: 18px;
+    width: 28px;
+    text-align: center;
+}
+
+.planet-row .name {
+    flex: 1;
+    margin-left: 8px;
+}
+
+.planet-row .position {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.planet-row .house {
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.retrograde {
+    color: var(--orange);
+    font-size: 11px;
+}
+
+.aspect-row .type {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.aspect-conjunction { background: rgba(155, 89, 182, 0.2); color: #BC8CFF; }
+.aspect-sextile { background: rgba(46, 204, 113, 0.2); color: #3FB950; }
+.aspect-square { background: rgba(231, 76, 60, 0.2); color: #F85149; }
+.aspect-trine { background: rgba(52, 152, 219, 0.2); color: #58A6FF; }
+.aspect-opposition { background: rgba(230, 126, 34, 0.2); color: #F0883E; }
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    color: white;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, var(--orange), var(--red));
+    color: white;
+}
+
+.premium-gate {
+    text-align: center;
+    padding: 24px;
+}
+
+.premium-gate p {
+    margin-bottom: 16px;
+    color: var(--text-secondary);
+}
+
+.plans-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.plan-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+}
+
+.plan-card.active {
+    border-color: var(--accent);
+}
+
+.plan-card .plan-name {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.plan-card .plan-price {
+    color: var(--accent);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.plan-card .plan-features {
+    list-style: none;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.plan-card .plan-features li::before {
+    content: "✓ ";
+    color: var(--green);
+}
+
+.profile-info {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.profile-info .label {
+    color: var(--text-secondary);
+}
+
+.readings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.reading-item {
+    padding: 10px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.reading-item .reading-type {
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.reading-item .reading-date {
+    color: var(--text-secondary);
+    font-size: 11px;
+    float: right;
+}
+
+.loader {
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 40px;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    animation: fadeIn 0.3s ease;
+}
