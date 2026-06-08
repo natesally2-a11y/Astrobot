@@ -50,6 +50,7 @@ class Settings(BaseSettings):
     )
 
     bot_token: str = Field(default="", alias="BOT_TOKEN")
+    bot_username: str = Field(default="stellarium_ai_bot", alias="BOT_USERNAME")
     webhook_url: str = Field(default="", alias="WEBHOOK_URL")
     webhook_path: str = "/webhook"
 

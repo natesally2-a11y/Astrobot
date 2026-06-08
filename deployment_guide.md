@@ -16,6 +16,7 @@ APP_ENV=prod
 BASE_URL=https://yourdomain.com
 WEBHOOK_URL=https://yourdomain.com
 BOT_TOKEN=replace-with-fresh-token
+BOT_USERNAME=stellarium_ai_bot
 OPENAI_API_KEY=replace-with-openai-key
 DATABASE_URL=postgresql+asyncpg://stellarium:stellarium@db:5432/stellarium
 REDIS_URL=redis://redis:6379/0
@@ -26,6 +27,12 @@ SECRET_KEY=replace-with-random-secret
 
 ```bash
 docker compose up -d --build
+```
+
+Для локальной установки без Docker на Ubuntu понадобится:
+
+```bash
+sudo apt-get install -y python3-dev build-essential
 ```
 
 Проверьте:

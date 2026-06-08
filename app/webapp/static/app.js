@@ -1,5 +1,6 @@
 const body = document.body;
 const baseUrl = body.dataset.baseUrl || "";
+const botUsername = body.dataset.botUsername || "stellarium_ai_bot";
 
 function resolveTelegramId() {
   const explicit = body.dataset.telegramId;
@@ -52,12 +53,7 @@ async function bootstrap() {
   document.getElementById("chart-image").src = `${baseUrl}/api/webapp/chart.svg${suffix}`;
 
   document.getElementById("open-chat").addEventListener("click", () => {
-    const botUsername = window.Telegram?.WebApp?.initDataUnsafe?.receiver?.username;
-    if (botUsername) {
-      window.open(`https://t.me/${botUsername}`, "_blank");
-      return;
-    }
-    window.location.href = "https://t.me/";
+    window.open(`https://t.me/${botUsername}`, "_blank");
   });
 }
 

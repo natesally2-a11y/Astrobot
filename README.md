@@ -45,6 +45,7 @@ app/
 
 2. Заполните:
    - `BOT_TOKEN`
+   - `BOT_USERNAME`
    - `OPENAI_API_KEY` (опционально, есть fallback)
    - `BASE_URL` и `WEBHOOK_URL` для production webhook
 
@@ -62,6 +63,7 @@ app/
 ## Локальный запуск без Docker
 
 ```bash
+sudo apt-get install -y python3-dev build-essential
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt

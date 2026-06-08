@@ -65,6 +65,7 @@ async def webapp_index(
             "app_name": settings.app_name,
             "base_url": settings.base_url.rstrip("/"),
             "telegram_id": telegram_id,
+            "bot_username": settings.bot_username,
             "disclaimer": DISCLAIMER_TEXT,
         },
     )
